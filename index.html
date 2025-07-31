@@ -120,13 +120,35 @@
     <br>We’re excited to welcome you!
     <br>-Goswami Family
   </footer>
+             <!-- Play & Pause Buttons -->
+  <button onclick="playMusic()">Play Music</button>
+  <button onclick="pauseMusic()">Pause Music</button>
 
-  <!-- Background Music -->
-  <audio autoplay loop>
-    <source src="bg-music.mp3" type="audio/mpeg">
+  <!-- Hidden audio element -->
+  <audio id="bg-music" loop>
+    <source src="your-music-file.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
+  <script>
+    const music = document.getElementById('bg-music');
+
+    // Try autoplay on page load
+    window.addEventListener('load', () => {
+      music.play().catch((error) => {
+        console.log('Autoplay was blocked. User must click Play.');
+      });
+    });
+
+    // Button controls
+    function playMusic() {
+      music.play();
+    }
+
+    function pauseMusic() {
+      music.pause();
+    }
+  </script>
   <script>
     // Countdown
     const countdown = document.getElementById('timer');
